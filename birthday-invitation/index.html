@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>You're Invited ♡</title>
+  <meta name="description" content="A little birthday invitation, made with love.">
+  <meta property="og:title" content="You're Invited ♡">
+  <meta property="og:description" content="Something special has been waiting for you...">
+  <meta name="theme-color" content="#f6d6dc">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%80%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+
+  <!-- Ambient background (petals are added by JS) -->
+  <div class="bg" aria-hidden="true">
+    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+    <div class="glow g1"></div><div class="glow g2"></div>
+  </div>
+  <div id="petals" class="petals" aria-hidden="true"></div>
+
+  <!-- ============ 1. WELCOME / ENVELOPE ============ -->
+  <section id="welcome" class="welcome" aria-label="Opening">
+    <button id="skipBtn" class="skip" type="button">Skip intro</button>
+    <div class="welcome-inner">
+      <p id="welcomeTo" class="welcome-to script"></p>
+      <p id="welcomeLine" class="welcome-line"></p>
+
+      <div id="envelope" class="envelope" aria-hidden="true">
+        <div class="env-back"></div>
+        <div class="env-card">
+          <span class="card-small">You're invited</span>
+          <span class="card-name script" id="cardName"></span>
+          <span class="card-heart">♡</span>
+        </div>
+        <div class="env-front"></div>
+        <div class="env-flap"></div>
+        <div class="env-seal"><span>♡</span></div>
+      </div>
+
+      <button id="openBtn" class="btn btn-primary" type="button"></button>
+    </div>
+    <div id="burst" class="burst" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ NAV ============ -->
+  <nav id="nav" class="nav" aria-label="Sections">
+    <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Menu">♡</button>
+    <ul id="navList" class="nav-list">
+      <li><a href="#home" data-k="home"></a></li>
+      <li><a href="#countdown" data-k="countdown"></a></li>
+      <li><a href="#about" data-k="about"></a></li>
+      <li><a href="#memories" data-k="memories"></a></li>
+      <li><a href="#letter" data-k="letter"></a></li>
+      <li><a href="#details" data-k="details"></a></li>
+      <li><a href="#rsvp" data-k="rsvp"></a></li>
+      <li><a href="#wishes" data-k="wishes"></a></li>
+    </ul>
+  </nav>
+
+  <main id="site" class="site hidden">
+
+    <!-- ============ 2. HERO ============ -->
+    <section id="home" class="hero section">
+      <div class="hero-card reveal">
+        <span class="bow" aria-hidden="true">🎀</span>
+        <p class="eyebrow">You're Invited!</p>
+        <h1 id="heroName" class="hero-name script"></h1>
+        <p id="heroAge" class="hero-age"></p>
+        <p id="heroTagline" class="hero-tagline"></p>
+        <div class="divider" aria-hidden="true"><span>♡</span></div>
+        <p id="heroMessage" class="hero-message"></p>
+        <ul class="hero-facts">
+          <li><small>When</small><b id="heroDate"></b></li>
+          <li><small>Time</small><b id="heroTime"></b></li>
+          <li><small>Where</small><b id="heroVenue"></b></li>
+          <li id="heroDressWrap"><small>Dress code</small><b id="heroDress"></b></li>
+        </ul>
+        <a href="#countdown" class="scroll-hint" aria-label="Scroll down">scroll gently ↓</a>
+      </div>
+    </section>
+
+    <!-- ============ 3. COUNTDOWN ============ -->
+    <section id="countdown" class="section">
+      <div class="wrap reveal">
+        <h2 class="title">Counting down to the day</h2>
+        <div id="countdownBox" class="countdown" role="timer" aria-live="off">
+          <div class="cd"><b id="cdD">--</b><span>days</span></div>
+          <div class="cd"><b id="cdH">--</b><span>hours</span></div>
+          <div class="cd"><b id="cdM">--</b><span>minutes</span></div>
+          <div class="cd"><b id="cdS">--</b><span>seconds</span></div>
+        </div>
+        <p id="cdNote" class="cd-note"></p>
+      </div>
+    </section>
+
+    <!-- ============ 4. ABOUT ============ -->
+    <section id="about" class="section">
+      <div class="wrap narrow reveal">
+        <h2 id="aboutTitle" class="title"></h2>
+        <div id="aboutText" class="about-text"></div>
+      </div>
+    </section>
+
+    <!-- ============ 5. GALLERY ============ -->
+    <section id="memories" class="section">
+      <div class="wrap reveal">
+        <h2 id="galleryTitle" class="title"></h2>
+        <p id="gallerySub" class="subtitle"></p>
+        <div id="gallery" class="gallery"></div>
+      </div>
+    </section>
+
+    <!-- ============ 6. LETTER ============ -->
+    <section id="letter" class="section">
+      <div class="wrap narrow reveal">
+        <h2 id="letterTitle" class="title"></h2>
+        <div id="letterSealWrap" class="seal-wrap">
+          <button id="sealBtn" class="seal-btn" type="button" aria-expanded="false" aria-controls="letterPaper">
+            <span class="wax">♡</span>
+            <span id="sealLabel" class="seal-label"></span>
+          </button>
+        </div>
+        <article id="letterPaper" class="paper" hidden>
+          <p id="lGreeting" class="l-greeting script"></p>
+          <div id="lWishes" class="l-block"></div>
+          <div class="l-ornament" aria-hidden="true">✿</div>
+          <div id="lMemories" class="l-block"></div>
+          <div class="l-ornament" aria-hidden="true">✿</div>
+          <div id="lFinal" class="l-block"></div>
+          <p id="lClosing" class="l-closing"></p>
+          <p id="lSign" class="l-sign script"></p>
+          <p id="lPS" class="l-ps"></p>
+        </article>
+        <div id="notesWrap" class="notes-wrap" hidden>
+          <p id="notesTitle" class="subtitle"></p>
+          <div id="notes" class="notes"></div>
+          <div id="noteOut" class="note-out" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. DETAILS ============ -->
+    <section id="details" class="section">
+      <div class="wrap reveal">
+        <h2 class="title">The celebration</h2>
+        <div class="details-grid">
+          <div class="calendar" aria-hidden="true">
+            <div class="cal-top"><span id="calMonth">---</span></div>
+            <div class="cal-day" id="calDay">--</div>
+            <div class="cal-bottom"><span id="calWeekday">---</span> · <span id="calYear">----</span></div>
+          </div>
+          <div class="details-info">
+            <p class="d-line"><small>Date &amp; time</small><b id="dDateTime"></b></p>
+            <p class="d-line"><small>Venue</small><b id="dVenue"></b></p>
+            <p class="d-line"><small>Address</small><span id="dAddress"></span></p>
+            <p class="d-line" id="dDressWrap"><small>Dress code</small><span id="dDress"></span></p>
+            <div class="btn-row">
+              <a id="mapBtn" class="btn btn-primary" target="_blank" rel="noopener noreferrer"></a>
+              <button id="calBtn" class="btn btn-ghost" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. RSVP ============ -->
+    <section id="rsvp" class="section">
+      <div class="wrap narrow reveal">
+        <h2 id="rsvpTitle" class="title"></h2>
+        <p id="rsvpSub" class="subtitle"></p>
+        <p id="rsvpDeadline" class="deadline"></p>
+        <form id="rsvpForm" class="card-form" novalidate>
+          <label for="rsvpName">Your name</label>
+          <input id="rsvpName" name="name" type="text" autocomplete="name" maxlength="80" required>
+          <fieldset>
+            <legend class="sr">Attendance</legend>
+            <div class="choices" id="choices">
+              <button type="button" class="choice" data-v="yes" aria-pressed="false"></button>
+              <button type="button" class="choice" data-v="maybe" aria-pressed="false"></button>
+              <button type="button" class="choice" data-v="no" aria-pressed="false"></button>
+            </div>
+          </fieldset>
+          <p id="rsvpErr" class="err" role="alert"></p>
+          <button class="btn btn-primary" type="submit" id="rsvpSubmit">Send my reply ♡</button>
+        </form>
+        <div id="rsvpDone" class="done" role="status" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <!-- ============ 9. MUSIC & WISHES ============ -->
+    <section id="wishes" class="section">
+      <div class="wrap narrow reveal">
+        <div id="musicBox" class="music-box" hidden>
+          <h2 id="musicTitle" class="title small"></h2>
+          <div class="player">
+            <button id="playBtn" class="play" type="button" aria-label="Play music" aria-pressed="false">▶</button>
+            <span id="songName" class="song"></span>
+          </div>
+          <a id="playlistBtn" class="btn btn-ghost" target="_blank" rel="noopener noreferrer" hidden></a>
+        </div>
+
+        <h2 id="wishesTitle" class="title"></h2>
+        <p id="wishesSub" class="subtitle"></p>
+        <form id="wishForm" class="card-form" novalidate>
+          <label for="wishName" class="sr">Your name</label>
+          <input id="wishName" type="text" maxlength="80" autocomplete="name">
+          <label for="wishMsg" class="sr">Your wish</label>
+          <textarea id="wishMsg" rows="4" maxlength="600"></textarea>
+          <p id="wishErr" class="err" role="alert"></p>
+          <button class="btn btn-primary" type="submit" id="wishBtn"></button>
+        </form>
+        <div id="wishDone" class="done" role="status" aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <!-- ============ 10. THANKS ============ -->
+    <section id="thanks" class="section thanks">
+      <div class="wrap narrow reveal">
+        <span class="bow" aria-hidden="true">🎀</span>
+        <h2 id="thanksTitle" class="title"></h2>
+        <p id="thanksText" class="thanks-text"></p>
+        <p id="thanksSign" class="script thanks-sign"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating controls -->
+  <button id="musicFloat" class="fab fab-music hidden" type="button" aria-label="Play music" aria-pressed="false" hidden>♪</button>
+  <button id="toTop" class="fab fab-top" type="button" aria-label="Back to top">↑</button>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button id="lbClose" class="lb-btn lb-close" type="button" aria-label="Close">✕</button>
+    <button id="lbPrev" class="lb-btn lb-prev" type="button" aria-label="Previous photo">‹</button>
+    <figure class="lb-fig">
+      <img id="lbImg" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button id="lbNext" class="lb-btn lb-next" type="button" aria-label="Next photo">›</button>
+  </div>
+
+  <audio id="audio" preload="none" loop></audio>
+
+  <script src="js/config.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
